@@ -1,0 +1,14 @@
+@!font->text("Arial")
+@!font->code("Courier New")
+@!text->size(24)
+@!heading->size(48)
+@!heading->colour(red)
+@!title->"Quickmark Test Document"
+
+@$h Hello World!
+
+Typing some text... More text
+
+New line
+
+More text `foo();` more text
