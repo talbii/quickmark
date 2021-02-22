@@ -40,35 +40,33 @@ class Style:
     
     Also saves a list of all the existing styles. '''
 
-    instances = []
+    instances = set()
 
     def __init__(self, tag, class_name):
         ''' Initializes a new Style. 
         
         Required: tag (e.g. p, div, span), and class name (e.g. <p class="...">) '''
-        if(Style.exists(tag, class_name)):
+        if(self in Style.instances):
             raise DuplicateStyle(f"{tag}, class={class_name}  Already exists.")
         self.tag = tag
         self.class_name = class_name
         self.css = ""
-        Style.instances.append(self)
+        Style.instances.add(self)
 
     def add_property(self, name, value) -> None:
         """ Adds the property `name` with `value` to current object's CSS style """
-        self.css += f"{name}: {value},\n"
+        self.css += f"{name}: {value};\n"
 
     def __eq__(self, other: Style) -> bool:
         """ Equals method. Used only for `exists` to make things a little shorter. """
         return self.tag == other.tag and \
         self.class_name == other.class_name
-
-    def exists(self, tag, class_name) -> bool:
-        """ Returns `True` if this style (tag, class_name) already exists. """
-        s: Style # type-hinting
-        for s in self.instances:
-            if(self == s):
-                return True
-        return False
+    
+    def __hash__(self) -> int:
+        """ Hash method. Used for inserting a `Style` into a `set` (to improve `exists()`). """
+        return hash(
+            (self.tag, self.class_name)
+        )
 
 class DuplicateStyle(Exception):
     """ This is used mainly for debugging. 

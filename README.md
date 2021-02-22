@@ -14,3 +14,7 @@ For information about syntax, themes and more, please check the [Documentation](
 - [ ] Images, Links
 - [ ] Javascript addons (MathJax, etc.)
 - [ ] **THEMES**
+
+------------------
+
+For any inquires, you can contact me [here](https://talbii.github.io/pages/contact).

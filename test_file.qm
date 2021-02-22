@@ -3,7 +3,7 @@
 @!text->size(24)
 @!heading->size(48)
 @!heading->colour(red)
-@!title->"Quickmark Test Document"
+@#title->"Quickmark Test Document"
 
 @$h Hello World!
 

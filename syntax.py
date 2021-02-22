@@ -11,4 +11,7 @@ Find more explanation at `docs.md`
 
 # General content
 
-code = "^`.+`$"                     # Finds `ANY TEXT`
+code = r"^`.+`$"                    # Matches `ANY TEXT`
+bold = r"^[(*){2}\S].+[.(*){2}]$"   # Matches **ANY TEXT**
+italic = r"^[*(?!*)].+[.*]$"        # Matches *ANY TEXT*
+                                    # (this is not working!)
