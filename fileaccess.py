@@ -40,3 +40,9 @@ def read_file(path: str):
         return open(path, "r")
     except BaseException:
         return NULL
+
+def read(ignore_ext:int = 0): 
+    """ Packed function which reads a file path and returns the file opened from it"""
+    return read_file(
+        get_path(ext="qm", ignore_ext=ignore_ext)
+    )
