@@ -5,6 +5,19 @@
 
 In short, Markdown is a way to quickly write documents that will render properly across machines (using predefined rules). Quickmark currently supports Github-flavoured Markdown (GFM).
 
+**Table of Contents**
+
+- [Documentation for Quickmark](#documentation-for-quickmark)
+  - [Github-flavoured Markdown](#github-flavoured-markdown)
+    - [1. Headings](#1-headings)
+    - [2. Paragraphs](#2-paragraphs)
+    - [3. Text Styling](#3-text-styling)
+    - [4. Special Text](#4-special-text)
+    - [5. Special Blocks](#5-special-blocks)
+  - [Quickmark Features](#quickmark-features)
+
+<a name="gfm"></a>
+
 ## Github-flavoured Markdown
 
 ### 1. Headings
