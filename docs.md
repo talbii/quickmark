@@ -1,61 +1,191 @@
-# Documentation/Syntax for Quickmark
+# Documentation for Quickmark
 
-*(yes, I do realise this is written in Markdown)*
+> Markdown is a lightweight markup language for creating formatted text using a plain-text editor.
+> *- Wikipedia*
 
-------------------
+In short, Markdown is a way to quickly write documents that will render properly across machines (using predefined rules). Quickmark currently supports Github-flavoured Markdown (GFM).
 
-Quickmark, is aiming to be a substitute for Markdown - but not to replace it. I have a lot of respect for Markdown's simplicity, and Quickmark is very much based on it.
+## Github-flavoured Markdown
 
-The main feature I wanted to bring to Quickmark, is customizable styling, without knowledge of HTML/CSS.
+### 1. Headings
 
-## Pre-Document Headers
+You have 6 different sizes of headings (according to `<h1>` to `<h6>`):
 
-### Manual Headers
+```markdown
 
-In order to achieve customized styling, before writing your document, you can use setting-headers, which like the name suggests, set specific things. To access said headers, use `@!` (this was chosen in order to not conflict with any possible text).
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
 
-#### Example File
-
-```quickmark
-@!font->text("MyFont")
-@!font->code("MyMonospaceFont")
-@!text->size(18)
-@!code->size(18)
-@!heading->size(28)
-@!heading->colour(red)
-@!margin->vertical(100)
-...
-
-@$h My Heading!
-
-Lorem ipsum dolor `some_code(1,2,3)` sit amet consectetur.
 ```
 
-any text written after a full setting statement (e.g. `@!font->text("MyFont)`) will be treated as a comment, and will not be printed onto your document.
+### 2. Paragraphs
 
-### Themes
+In order to write normal text (e.g. no special sizing), you simply write text normally, without using any special characters to indicate so:
 
-Setting **all** of the headers manually can be very annoying, and will defiantly take a long time, let alone a lot of lines. In order to combat this, you can also use a theme, which has packed already all of the styling into one import. In order to use a theme, you
+```markdown
 
-1. Need to make sure the theme is available in the project directory/compiler accessible
-2. Make sure the theme is valid, and has correct syntax.
-3. Finally, to use a theme write `@theme->"MyTheme"` at the top of your file.
+I am writing some text, this is a Paragraph in Markdown.
 
-*Note: Using/creating a theme is just a predefined list of headers which have been set in advance. Theme creators may add customizability to their themes, using options. In order to access the options, the user only has to add `[]`, like so: <code> @theme->"MyCustomizableTheme"[*options*]</code>*
+```
 
-Quickmark comes already with 2 predefined themes: `Standard` and `StandardDark`, which have a few options. I encourage you to create themes, since I don't know much about design.
+### 3. Text Styling
 
-### Creating your own theme
+As you may have noticed, you can style your text a bit, when needed. Your options are:
 
-TODO
+1. Italic
+2. Bold
+3. (inline) Code
+4. Strikethrough
+5. Quote
 
-## Document Headers
+```markdown
 
-As you've noticed in the example before, there also exist a small amount of document headers:
+*this is italic*
+**this is bold**
+`this_is_code();`
+~~this is strikethrough~~
+> This is a quote
 
-- Heading (`h1`-`h6`) - <code> @$h[*number*] Text</code> (`number` defaults to 1).
-- Bold - `**Text**`
-- Italics - `*Text*`
-- Code - <code> `Text` </code>
+```
 
-*Note: Only the heading requires using a `@` tag*
+### 4. Special Text
+
+You can also insert links, and images:
+
+```markdown
+
+This is text [link](https://my_url.com/) more text
+
+This is an image:
+![Image](https://link_to_image.com/image.png)
+```
+
+### 5. Special Blocks
+
+You can insert special blocks throughout your document, such as lists, code blocks and tables.
+
+To make a code block:
+
+<code>
+``` <br>
+This is a code block <br>
+some_code(1, 2, 3); <br>
+```
+</code>
+
+to get styling on your code, after the first <code>```</code>, write the name of your language. For example:
+
+<code>
+```python <br>
+def hello(): <br>
+    print("Hello World!") <br>
+```
+</code>
+
+will render as:
+
+```python
+def hello(): 
+    print("Hello World!") 
+```
+
+To make a list:
+
+```markdown
+
+1. This is a numbered list
+2. ...
+
+- This is a bulleted list
+- ...
+```
+
+And finally, to make a table you need to "draw" the table using characters like `|` and `-`.
+
+```markdown
+
+| Name       | Price (USD) |
+|------------|-------------|
+| Bitcoin    | $36,011.92  |
+| Ethereum   | $2,552.78   |
+| Monero     | $265.70     |
+| Cardano    | $1.58       |
+
+```
+
+will render as:
+
+| Name       | Price (USD) |
+|------------|-------------|
+| Bitcoin    | $36,011.92  |
+| Ethereum   | $2,552.78   |
+| Monero     | $265.70     |
+| Cardano    | $1.58       |
+
+note, you don't actually have to match the lines exactly, so the following table would still render out the same way (but, it would look worse while editing it).
+
+```markdown
+
+| Name|Price (USD)|
+|-----|-----------|
+| Bitcoin| $36,011.92|
+| Ethereum| $2,552.78|
+| Monero| $265.70|
+| Cardano| $1.58|
+
+```
+
+## Quickmark Features
+
+In core, the main feature of Quickmark is having custom styling, and loading scripts as needed.
+
+To achieve this, using the following syntax to denote to the compiler to load/use something:
+
+```markdown
+@[script1, script2, script3, ...,]
+@:[your style name/config]
+@![additional compile arguments]
+```
+
+Insert these statements at the top of your file, before any actual content. Obviously, these won't be rendered into your final output.
+
+Below is an example document, and its HTML output.
+
+```markdown
+@[mathjax]
+@:[styleconfig1]
+@![title My Document]
+
+# Hello World!
+
+Some text `code()` more text.
+
+$$ e^x \geqslant x + 1 $$
+
+```
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> My Document </title>
+        <style> /* import styleconfig1 */ </style>
+        <script src="mathjax.js"></script>
+
+        <!-- Auto inserted by Quickmark -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1 class="qm-h1"> Hello World! </h1>
+        <p class="qm-p"> Some text <code class="qm-code">code()</code> more text. </p>
+
+        <p class="qm-p"> $$ e^x \geqslant x+1 $$
+    </body>
+</html>
+```
