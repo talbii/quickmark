@@ -19,3 +19,5 @@ Out of the box, Quickmark supports Github-flavoured markdown, so don't worry abo
 3. Switch between styling as needed: compile different files with different styling.
 
 Check out the [documentation](docs.md) for additional information about that.
+
+**Editors note** I'm aware that this isn't actually "compiling", for many technical reasons which honestly I don't know.

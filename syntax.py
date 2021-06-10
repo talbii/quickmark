@@ -1,15 +1,8 @@
 """ 
-Main syntax for Quickmark.
-Find more explanation at `docs.md` 
+Regex matching for Markdown Expressions
 """
 
-# SET headers (@!)
-
-
-# Content headers (@$)
-
-
-# General content
+# Text Styling
 
 code = r"^`.+`$"                    # Matches `ANY TEXT`
 bold = r"^[(*){2}\S].+[.(*){2}]$"   # Matches **ANY TEXT**

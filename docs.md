@@ -161,7 +161,7 @@ To achieve this, using the following syntax to denote to the compiler to load/us
 ```markdown
 @[script1, script2, script3, ...,]
 @:[your style name/config]
-@![additional compile arguments]
+@![additional][compile][arguments]
 ```
 
 Insert these statements at the top of your file, before any actual content. Obviously, these won't be rendered into your final output.
