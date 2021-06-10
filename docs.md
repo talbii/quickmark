@@ -83,20 +83,21 @@ You can insert special blocks throughout your document, such as lists, code bloc
 
 To make a code block:
 
-<code>
-``` <br>
-This is a code block <br>
-some_code(1, 2, 3); <br>
+`````
+``` 
+This is a code block 
+some_code(1, 2, 3); 
 ```
-</code>
+`````
 
 to get styling on your code, after the first <code>```</code>, write the name of your language. For example:
 
-<code>
-```python <br>
-def hello(): <br>
-    print("Hello World!") <br>
+`````
+```python 
+def hello():
+    print("Hello World!") 
 ```
+`````
 </code>
 
 will render as:
