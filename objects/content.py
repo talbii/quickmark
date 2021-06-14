@@ -1,25 +1,24 @@
 from __future__ import annotations  # Used for type-hinting.
 
-class Paragraph:
-    ''' This class/object represents a singular paragraph in an HTML file,
-    e.g. text between <p> </p> tags. This class is to be used instead of a string,
-    as it features more functions and readability.
+class HTMLObject:
+    ''' This class/object represents a singular HTML object (<p>, <h1>, <img>, etc.) in an HTML file.
+    This class is to be used instead of a string, as it features more functions and readability.
     '''
 
-    def __init__(self):
+    def __init__(self, tag):
         """ Constructs an empty paragraph """
         self.texts = ""
+        self.tag = tag
         
     def release(self) -> str:
         """ Empties the current paragraph and returns it as a HTML paragraph - string """
         temp = self.texts
         self.texts = ""
-        return f'<p class="text">{temp}</p>\n'
+        return f'<{self.tag} class="qm-{self.tag}">{temp}</{self.tag}>\n'
     
     def add(self, text):
-        """ Adds `text` to current paragraph. `text` is formatted!! """
-        self.texts += (text+"\n")
-    
+        """ Adds `text` to current paragraph. `text` is formatted """
+        self.texts += text
 class Content:
     ''' Holds all of the body content. '''
     def __init__(self):

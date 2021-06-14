@@ -18,31 +18,16 @@ def get_path(s=NULL, ext:str="qm", ignore_ext:int=0) -> str:
         wflag = 1              
 
     if(exists(s)):
-        print(("", "[Quickmark] Warning: file extension doesn't match regular .qm extension. Silence this using -S")[(not ignore_ext) and wflag], file=stderr, end="")
+        print(("", f"[Quickmark: Warning] File extension doesn't match regular .{ext} extension. Silence this using -S\n")[(not ignore_ext) and wflag], file=stderr, end="")
         return s
     else: 
         return NULL
 
-def write_path(path: str, data: str) -> None | NULL:
+def write(path: str, data: str) -> None | NULL:
     """ Writes string to path. Assumes path is valid (and includes file type) """
     try:
         with open(path, "w") as f:
             f.write(data) # this "closes" the function, and therefore a "None will be returned"
-    except BaseException: # If there's any error
+    except Exception: # If there's any error
         return NULL       # (this shouldn't really happen)
                           # and will be treated later.
-
-def read_file(path: str):
-    """ Opens a file and returns it if the operation was successful. Otherwise, return NULL.
-    
-    Assumes path is valid (as an input from `get_path`) """
-    try:
-        return open(path, "r")
-    except BaseException:
-        return NULL
-
-def read(ignore_ext:int = 0): 
-    """ Packed function which reads a file path and returns the file opened from it"""
-    return read_file(
-        get_path(ext="qm", ignore_ext=ignore_ext)
-    )
