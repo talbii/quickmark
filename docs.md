@@ -16,8 +16,6 @@ In short, Markdown is a way to quickly write documents that will render properly
     - [5. Special Blocks](#5-special-blocks)
   - [Quickmark Features](#quickmark-features)
 
-<a name="gfm"></a>
-
 ## Github-flavoured Markdown
 
 ### 1. Headings
@@ -83,21 +81,21 @@ You can insert special blocks throughout your document, such as lists, code bloc
 
 To make a code block:
 
-<code>
-``` <br>
-This is a code block <br>
-some_code(1, 2, 3); <br>
+`````markdown
+``` 
+This is a code block 
+some_code(1, 2, 3); 
 ```
-</code>
+`````
 
 to get styling on your code, after the first <code>```</code>, write the name of your language. For example:
 
-<code>
-```python <br>
-def hello(): <br>
-    print("Hello World!") <br>
+`````markdown
+```python 
+def hello():
+    print("Hello World!") 
 ```
-</code>
+`````
 
 will render as:
 
@@ -162,6 +160,12 @@ To achieve this, using the following syntax to denote to the compiler to load/us
 @[script1, script2, script3, ...,]
 @:[your style name/config]
 @![additional][compile][arguments]
+```
+
+Which will then be translated, roughly, to:
+
+```shell
+$ quickmark <your_file.md> -[additional] -[compile] -[args] -useconfig [style name] -usescript script1, script2, script3, ...
 ```
 
 Insert these statements at the top of your file, before any actual content. Obviously, these won't be rendered into your final output.

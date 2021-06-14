@@ -6,7 +6,7 @@ TLDR; `md` -> `html`
 
 ## Why
 
-Without getting into too much of a ramble, I want to use markdown to write my blog posts, and currently Github Pages (which is what I'm using for my website) uses Jekyll for its theming, so markdown pages render differently then my website, which looks ugly.
+Without getting into too much of a ramble, I wanted to use markdown to write my blog posts, and currently Github Pages (which is what I'm using for my website) uses Jekyll for its theming, so Markdown pages render differently then my website, which looks ugly.
 
 Also good for performance, static websites and backwards compatibility/cross-platform support (most computers can't render markdown until you download some editor).
 
@@ -20,4 +20,6 @@ Out of the box, Quickmark supports Github-flavoured markdown, so don't worry abo
 
 Check out the [documentation](docs.md) for additional information about that.
 
-**Editors note** I'm aware that this isn't actually "compiling", for many technical reasons which honestly I don't know.
+If you wish, you can use Quickmark without any extra knowledge, and just have compiled Markdown pages as HTML.
+
+**Editor's note** I'm aware that this isn't actually "compiling", for many technical reasons which honestly I don't know, not that it matters.
